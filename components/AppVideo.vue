@@ -38,6 +38,7 @@ export default {
   },
   filters:{
     omit: (value) => {
+      console.log(value);
       if(!value){
         return '';
       }

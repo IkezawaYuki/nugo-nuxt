@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TheHeader/>
-    <div class="column content">
+    <div class="columns">
       <TheSidebar/>
       <div class="column content">
         <nuxt />
@@ -17,7 +17,7 @@ import TheSidebar from "~/components/TheSidebar";
 export default {
   components:{
     TheHeader,
-    TheSidebar,
+    TheSidebar
   }
 }
 
@@ -29,7 +29,7 @@ export default {
   background: #FAFAFA;
 }
 
-.column{
+.columns{
   min-height: 100vh;
 }
 

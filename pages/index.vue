@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="block">
-        <div class="block video-block" v-for="item in items">
+        <div class="block video-block" v-for="(item, index) in items" :key="index">
           <AppVideo
               :item="item"
               :video-id="item.id"
@@ -30,7 +30,7 @@ export default {
     const payload = {
       uri: ROUTES.GET.POPULARS
     }
-    if(store.getters.getPopularVideos && stores.getters.getPopularVideos.length > 0){
+    if(store.getters.getPopularVideos && store.getters.getPopularVideos.length > 0){
       return
     }
     await store.dispatch('fetchPopularVideos', payload)

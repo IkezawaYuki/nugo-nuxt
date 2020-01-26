@@ -21,7 +21,7 @@ export const mutations = {
 }
 
 export const getters = {
-  getPopularVideos(store){
+  getPopularVideos(state){
     return state.items
-  }
+  },
 }
