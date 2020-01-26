@@ -1,0 +1,36 @@
+<template>
+  <div id="app">
+    <TheHeader/>
+    <div class="column content">
+      <TheSidebar/>
+      <div class="column content">
+        <nuxt />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import TheHeader from "~/components/TheHeader";
+import TheSidebar from "~/components/TheSidebar";
+
+export default {
+  components:{
+    TheHeader,
+    TheSidebar,
+  }
+}
+
+</script>
+
+<style>
+#app{
+  min-height: 100vh;
+  background: #FAFAFA;
+}
+
+.column{
+  min-height: 100vh;
+}
+
+</style>
