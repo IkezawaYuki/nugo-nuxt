@@ -27,11 +27,47 @@
 </template>
 
 <script>
-import ROUTES from '~/route/api'
-import AppVideo from "~/components/AppVideo"
+import ROUTES from '~/routes/api'
+import AppVideo from "~/components/AppVideo";
 
 export default {
-  
+  components: {
+    AppVideo
+  },
+  computed: {
+    items(){
+      return this.$store.getters.getSearchVideos
+    },
+    nextPageToken(){
+      return this.$store.getters.getSearchMeta.nextPageToken
+    },
+  },
+  methods:{
+    loadMore(){
+      const q = encodeURIComponent(this.$route.query.q) || ""
+      const payload = {
+        uri: ROUTES.GET.SEARCH,
+        params: {
+          pageToken: this.nextPageToken,
+          q
+        }
+      }
+      this.$store.dispatch('searchVideos', payload)
+    }
+  },
+  async fetch({store, query}){
+    const q = encodeURIComponent(query.q) || ""
+    const payload = {
+      uri: ROUTES.GET.SEARCH,
+      params: {
+        q
+      }
+    }
+    if (store.getters.getSearchVideos && store.getters.getSearchVideos.length > 0){
+      return
+    }
+    await store.dispatch('searchVideos', payload)
+  }
 }
 </script>
 
