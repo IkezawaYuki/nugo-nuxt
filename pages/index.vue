@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section>
     <div class="container">
       <div class="block">
         <div class="block video-block" v-for="(item, index) in items" :key="index">
