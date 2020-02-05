@@ -25,7 +25,7 @@
                 <span class="icon is-large">
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-heart fa-stack-1x"
-                      :class="[items.isFavorite ? 'active' : 'has-text-grey-light']"
+                      :class="[item.isFavorite ? 'active' : 'has-text-grey-light']"
                     >
                     </i>
                   </span>

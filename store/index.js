@@ -40,6 +40,7 @@ export const actions = {
     await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
     const res = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
     const token = await res.user.getIdToken()
+    console.log(token)
     this.$cookies.set('jwt_token', token)
     commit('mutateToken', token)
     this.app.router.push('/')
@@ -60,7 +61,7 @@ export const actions = {
     this.$cookies.remove('jwt_token')
     this.app.router.push('/')
   },
-  async toogleFavorite({commit}, payload){
+  async toggleFavorite({commit}, payload){
     const client = createRequestClient(this.$axios)
     const res = await client.post(payload.uri)
     commit('mutateToggleFavorite', res.is_favorite)
