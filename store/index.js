@@ -40,7 +40,6 @@ export const actions = {
     await firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
     const res = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
     const token = await res.user.getIdToken()
-    console.log(token)
     this.$cookies.set('jwt_token', token)
     commit('mutateToken', token)
     this.app.router.push('/')
@@ -51,7 +50,7 @@ export const actions = {
   async login({commit, dispatch}, payload){
     const res = await firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
     const token = await res.user.getIdToken()
-    console.log(token)
+    this.$cookies.set('jwt_token', token)
     commit('mutateToken', token)
     this.app.router.push('/')
   },
@@ -86,7 +85,8 @@ export const mutations = {
     state.searchMeta = payload
   },
   mutateToken(state, payload){
-    state.token = payload
+    console.log(payload);
+    state.token = payload;
   },
   mutateToggleFavorite(state, payload){
     state.item.isFavorite = payload
@@ -96,7 +96,6 @@ export const mutations = {
 
 export const getters = {
   getPopularVideos(state){
-    console.log(state.items)
     return state.items
   },
   getMeta(state){
